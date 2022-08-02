@@ -16,10 +16,22 @@
       "view": "form"
     },
     {
+      "title": "Click Example",
+      "hash": "#click_example",
+      "view": "click_example",
+      "hasStyle": true
+    },
+    {
       "title": "About",
       "hash": "#about",
       "view": "about",
       "html-only": true,
+      "hasStyle": true
+    },
+    {
+      "title": "Form Testing",
+      "hash": "#formTest",
+      "view": "formTest",
       "hasStyle": true
     },
     {
