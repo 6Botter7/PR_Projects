@@ -11,15 +11,15 @@
 <h3>Basic Form</h3>
 
 <div class="form">
-    <label for="firstname">
-        <div class="firstname" id="firstname"> First Name </div>
+    <label>
+        <div> First Name </div>
         <input id="firstname" type="text">
-        <div>-</div>
+        <div id="firstInput">-</div>
     </label>
-    <label for="lastname">
-        <div class="lastname" id="lastname"> Last Name </div>
+    <label>
+        <div> Last Name </div>
         <input id="lastname" type="text">
-        <div id="ln">-</div>
+        <div id="lastInput">-</div>
     </label>
 
     <div id="booking" class="result"> Booking Result Pending </div>
@@ -30,45 +30,3 @@
     <div class="value" id="slideVal">50</div>
 
 </div>
-
-<script>
-    let firstName = document.getElementById("firstname").value;
-    let lastName = document.getElementById("lastname").value;
-    let person = `This is ${firstName} ${lastName}`;
-    let booking = document.querySelector(".result");
-
-    firstName.oninput = function () {
-        booking.textContent = this.value;
-    }
-
-    // resultDiv= function () {
-    //     // document.querySelector(".result").textContent = person;
-    // }
-
-    lastName.oninput = function () {
-        document.getElementById("ln").textContent = this.value;
-    }
-
-    // var first = document.querySelector("#firstame").value = firstName
-    // var last = document.querySelector("#lastname").value = lastName
-    // var resultDiv = document.querySelector(".result");
-
-    // function booking() {
-    //     resultDiv.textContent = firstName + " " + lastName
-
-    // }
-
-    // booking();
-
-    const slider = document.getElementById("range");
-    const output = document.getElementById("slideVal");
-    output.textContent = slider.value;
-
-    slider.oninput = function () {
-        output.textContent = this.value;
-    };
-
-
-    // output.innerHTML = slider.value; // Display the default slider value
-
-</script>

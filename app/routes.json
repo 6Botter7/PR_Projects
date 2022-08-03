@@ -31,8 +31,7 @@
     {
       "title": "Form Testing",
       "hash": "#formTest",
-      "view": "formTest",
-      "hasStyle": true
+      "view": "formTest"
     },
     {
       "title": "404",
