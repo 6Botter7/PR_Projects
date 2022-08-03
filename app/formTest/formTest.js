@@ -1,107 +1,74 @@
 export default class FormTest extends crsbinding.classes.ViewBase {
-    async connectedCallback() {
-        // this.innerHTML = await fetch(import.meta.url.replace(".js", ".html")).then(result => result.text());
+    async connectedCallback(){
         await super.connectedCallback();
-        this.firstName = this._element.querySelector('#firstname');
-        this.first_input = this._element.querySelector('#firstInput');
+        this.firstNameInput = this._element.querySelector('#firstNameInput');
+        this.firstNameChangeHandler = this.firstNameChange.bind(this)
+        this.firstNameInput.addEventListener('change', this.firstNameChangeHandler);
 
+        this.lastNameInput = this._element.querySelector('#lastNameInput');
+        this.lastNameChangeHandler = this.lastNameChange.bind(this)
+        this.lastNameInput.addEventListener('change', this.lastNameChangeHandler);
 
-        this.lastName = this._element.querySelector('#lastname');
-        this.last_input = this._element.querySelector('#lastInput');
+        this.bookingResult = this._element.querySelector('#booking');
 
-        this.booking = this._element.querySelector('#booking');
+        this.ageInput = this._element.querySelector('.age');
+        this.ageHandler = this.ageChange.bind(this);
+        this.ageInput.addEventListener('change', this.ageHandler);
 
-        this.updateBooking = this.updateBooking.bind(this);
+        this.sliderValue = this._element.querySelector('#range');
+        this.slideHandler = this.ageChange.bind(this);
+        this.sliderValue.addEventListener('change', this.slideHandler);
 
+        this.ageResult = this._element.querySelector('#age');
+    }
 
-        this.slider = this._element.querySelector("#range");
-        this.output = this._element.querySelector("#slideVal");
+    async disconnectedCallback() {
+        this.firstNameInput.removeEventListener('change', this.firstNameChangeHandler);
+        this.firstNameChangeHandler = null;
 
+        this.lastNameInput.removeEventListener('change', this.lastNameChangeHandler);
+        this.lastNameChangeHandler = null;
 
+        this.ageInput.removeEventListener('change', this.ageChangeHandler);
+        this.ageHandler = null;
 
-        this.firstName.addEventListener('change', ()=>{
-            if (this.firstName != null) {
-            this.first_input.textContent = this.firstName.value;
-            console.log(this.firstName.value);
-            }
-            else{
-                console.log("not working");
-            }
-        });
+        this.sliderValue.addEventListener('change', this.slideHandler);
+        this.slideHandler = null;
+    }
 
-        this.lastName.addEventListener('change', ()=>{
-            if (this.lastName != null) {
-            this.last_input.textContent = this.lastName.value;
-            console.log(this.lastName.value);
-            }
-            else{
-                console.log("not working");
-            }
-        });
+    firstNameChange(event){
+        let firstNameResult = this.firstNameInput.value;
+        this.updateBooking(); 
+    }
 
-        // this.booking.addEventListener('change', ()=>{
-        //     if (this.booking.innerHTML != null) {
-        //         console.log("Helllloooooo");
-        //     this.booking.textContent = `The booking is for ${this.firstName}  ${this.lastName.value} `;
-        //     console.log(this.booking.value);
-        //     }
-        //     else{
-        //          console.log("not working");
-        //      }
+    lastNameChange(event){
+        let lastNameResult = this.lastNameInput.value;
+        this.updateBooking(); 
+    }
 
-        //     // `The booking is for ${this.firstName}  ${this.lastName.value} `
+    updateBooking() {
+        this.bookingResult.textContent = `The booking is for ${this.firstNameInput.value} ${this.lastNameInput.value} `;
+    }
 
-        //     // const result = this._element.querySelector('.result');
-        //     // result.textContent = `You like ${this.firstName.value}`
-        // });
+    ageChange(){
+        let sliderAge = this.sliderValue.value;
+        let age = this.ageInput.value;
 
-        // this.slider.addEventListener('change', ()=>{
-        //     if (this.slider != null) {
-        //     this.output.textContent = this.slider.value;
-        //     console.log(this.slider.value);
-        //     }
-        //     else{
-        //         console.log("not working");
-        //     }
-        // });
-
-        this.slider.addEventListener('change', this.updateBooking());
-
-        // this.slider.oninput = function(){
-        //     this.output.textContent = this.slider.value;
-        // }
-
+        if(sliderAge > age){
+            this.ageResult.textContent = sliderAge; 
+        }
+        else{
+            this.ageResult.textContent = age;
         }
 
-
-
-        disconnectedCallback(){
-            // this.first_input.removeEventListener('change', this.first_input);
-            // this.first_input = null;
-
-            this.firstName.removeEventListener('change', this.firstName);
-            this.firstName = null;
-
-            this.lastName.removeEventListener('change', this.lastName);
-            this.lastName = null;
-
-            this.booking.removeEventListener('change', this.booking);
-            this.booking = null;
-
-            this.slider.removeEventListener('change', this.slider);
-            this.slider = null;
+        if(sliderAge  <= 18 && age <= 18){
+            this._element.querySelector(".form").style.background = "#0276C2";  
         }
-
-        async updateBooking(event){
-            if (this.booking.innerHTML != null) {
-                // console.log("Helllloooooo");
-                const result = `The booking is for ${this.first_input.value}  ${this.lastName.value} `;
-                // const result = "this is a booking for";
-                this.booking.textContent = result;
-                console.log(this.booking.value);
-            }
-            else{
-                 console.log("not working");
-             }
+        else if(age > 18 && age <= 36 || sliderAge > 18 && sliderAge <= 36){
+            this._element.querySelector(".form").style.background = "#bcc909";
         }
-}
+        else{
+            this._element.querySelector(".form").style.background = "#b30000";
+        }
+        }
+    }

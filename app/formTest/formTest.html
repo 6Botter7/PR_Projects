@@ -12,6 +12,47 @@
         margin: 3px;
         border: 1px solid snow;
     }
+
+    .colorcode {
+        width: 150px;
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 25px;
+        margin: 25px;
+    }
+
+    #young,
+    #opt,
+    #old {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #blue {
+        background-color: #0276C2;
+        height: 25px;
+        width: 25px;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    #gold {
+        background-color: #bcc909;
+        height: 25px;
+        width: 25px;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    #red {
+        background-color: #b30000;
+        height: 25px;
+        width: 25px;
+        margin: 10px;
+        padding: 10px;
+    }
 </style>
 
 <h3>Basic Form</h3>
@@ -19,20 +60,36 @@
 <div class="form">
     <label>
         <div> First Name </div>
-        <input id="firstname" type="text">
-        <div id="firstInput">-</div>
+        <input id="firstNameInput" type="text">
     </label>
     <label>
         <div> Last Name </div>
-        <input id="lastname" type="text">
-        <div id="lastInput">-</div>
+        <input id="lastNameInput" type="text">
     </label>
-
     <div id="booking" class="result">-</div>
-
+    <label>
+        <div> Age </div>
+        <input class="age" type="number">
+    </label>
     <div class="slider">
-        <input type="range" min="1" max="100" id="range" value="50">
+        <input type="range" min="1" max="55" id="range" value="50">
     </div>
-    <div class="value" id="slideVal">50</div>
-
+    <div id="age">-</div>
 </div>
+
+<div>Acceptable Age</div>
+
+<span class="colorcode">
+    <div id="young">
+        Too Young
+        <div id="blue"></div>
+    </div>
+    <div id="opt">
+        Optimal
+        <div id="gold"></div>
+    </div>
+    <div id="old">
+        Too Old
+        <div id="red"></div>
+    </div>
+</span>
