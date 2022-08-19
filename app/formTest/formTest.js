@@ -32,7 +32,7 @@ export default class FormTest extends crsbinding.classes.ViewBase {
         this.ageInput.removeEventListener('change', this.ageChangeHandler);
         this.ageHandler = null;
 
-        this.sliderValue.addEventListener('change', this.slideHandler);
+        this.sliderValue.removeEventListener('change', this.slideHandler);
         this.slideHandler = null;
     }
 
