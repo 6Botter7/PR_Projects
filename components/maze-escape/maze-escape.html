@@ -1,0 +1,38 @@
+<!--TODO: Add maze-escape.html code here-->
+<!--styling for shadow dom-->
+<style>
+    :host {
+        display: flex;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(32, 227, 168, 0.5);
+        color: rgb(119, 111, 111);
+        font-size: 1rem;
+        font-weight: bold;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .grid-container {
+        display: grid;
+        width: 500px;
+        height: 500px;
+        grid-template-columns: repeat(auto-fill, minmax(10px, 1fr));
+        grid-template-rows: repeat(auto-fill, minmax(10px, 1fr));
+        /*gap: 1px;*/
+        background-color: #ccc; /* Optional background color for better visibility */
+        border: 2px solid #333;
+        position: absolute;
+        top: 20%;
+    }
+
+    .grid-item {
+        background-color: #fff; /* Optional background color for each block */
+        border: 1px solid silver;
+    }
+
+</style>
+
+<h3>Hello Maze Escape</h3>
+<div class="grid-container"></div>
